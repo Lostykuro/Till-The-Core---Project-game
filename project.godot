@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Novo Projeto de Jogo"
-run/main_scene="uid://bogbokqf3bc63"
+run/main_scene="uid://sghucydc1jxf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[global_group]
+
+Player="Jogador"
 
 [rendering]
 
