@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bpae87eeqdebx"]
+
+[ext_resource type="Script" uid="uid://d3sbikp7leftq" path="res://scripts/stone.gd" id="1_tuldt"]
+[ext_resource type="Texture2D" uid="uid://buh5qkwfao4vp" path="res://assets/Sprites/tilemaps/stones_spr.png" id="2_f651v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6niw0"]
+radius = 7.0
+height = 24.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuldt"]
+atlas = ExtResource("2_f651v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f651v"]
+atlas = ExtResource("2_f651v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6niw0"]
+atlas = ExtResource("2_f651v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7uw0"]
+atlas = ExtResource("2_f651v")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7uw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuldt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f651v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6niw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7uw0")
+}],
+"loop": true,
+"name": &"default_stone",
+"speed": 5.0
+}]
+
+[node name="Stone" type="StaticBody2D"]
+script = ExtResource("1_tuldt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_6niw0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w7uw0")
+animation = &"default_stone"

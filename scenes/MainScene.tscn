@@ -3,19 +3,38 @@
 [ext_resource type="PackedScene" uid="uid://bogbokqf3bc63" path="res://scenes/player.tscn" id="1_echbf"]
 [ext_resource type="PackedScene" uid="uid://y87rrb8pw00r" path="res://scenes/LevelTest.tscn" id="2_ibiss"]
 [ext_resource type="PackedScene" uid="uid://cu8klxp4wprap" path="res://scenes/TrocarMapa.tscn" id="3_c6dvc"]
-[ext_resource type="PackedScene" uid="uid://den6pe3kvsh8x" path="res://scenes/PedraObject.tscn" id="4_611at"]
+[ext_resource type="PackedScene" uid="uid://bpae87eeqdebx" path="res://scenes/stone.tscn" id="4_611at"]
 
 [node name="MainScene" type="Node2D"]
+
+[node name="LevelTest" parent="." instance=ExtResource("2_ibiss")]
+z_index = -1
 
 [node name="Player" parent="." instance=ExtResource("1_echbf")]
 position = Vector2(186, 103)
 up_direction = Vector2(0, 1)
 
-[node name="Node2D" parent="." instance=ExtResource("2_ibiss")]
-z_index = -1
-
 [node name="TrocarMapa" parent="." instance=ExtResource("3_c6dvc")]
-position = Vector2(298, 53)
+position = Vector2(258, 22)
 
-[node name="PedraObject" parent="." instance=ExtResource("4_611at")]
-position = Vector2(106, 107)
+[node name="Pedras" type="Node" parent="."]
+
+[node name="Stone" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(68, 103)
+
+[node name="Stone2" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(115, 133)
+Initial_hit_points = 10
+hit_points = 10
+is_destroyed = true
+
+[node name="Stone3" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(191, 147)
+is_destroyed = true
+
+[node name="Stone4" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(283, 106)
+
+[node name="Stone5" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(319, 143)
+is_destroyed = true
