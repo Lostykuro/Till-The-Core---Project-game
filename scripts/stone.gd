@@ -14,6 +14,7 @@ func _ready():
 		hit_points=0
 		$CollisionShape2D.disabled = true
 		destruction_level=3
+		z_index = -1 
 	update_sprite()
 
 func set_destruction_level(value):

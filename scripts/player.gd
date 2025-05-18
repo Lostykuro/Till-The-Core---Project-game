@@ -11,13 +11,21 @@ var time_since_last_hit := 0.0
 var use_cooldown := 0.8  # em segundos
 var time_since_last_use := 0.0
 
+var shadow_pos := Vector2.ZERO
+var shadow_lerp_speed := 24
+
 @onready var sprite := $AnimatedSprite2D
 @onready var hitbox_front := $Hitbox/Front_hitbox
 @onready var hitbox_back := $Hitbox/Back_hitbox
+@onready var shadow = $shadow
+
+
 
 var already_hit_targets := []
 
 func _ready():
+	shadow_pos = global_position 
+	shadow.global_position = shadow_pos
 	sprite.animation_finished.connect(_on_AnimatedSprite2D_animation_finished)
 
 
@@ -51,6 +59,7 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2.ZERO
 
+	shadowLerp(delta)
 	move_and_slide()
 	play_animation()
 
@@ -117,3 +126,9 @@ func apply_hit():
 
 	# Limpa a lista pra próxima vez
 	already_hit_targets.clear()
+
+
+func shadowLerp(delta):
+	var target_pos = global_position + Vector2(0, 4)  # offset shadow below
+	shadow_pos = shadow_pos.lerp(target_pos, delta * shadow_lerp_speed)
+	shadow.global_position = shadow_pos
