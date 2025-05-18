@@ -20,6 +20,10 @@ var shadow_lerp_speed := 24
 @onready var shadow = $shadow
 
 
+signal health_changed(current_hp)
+@export var MaxHp= 10
+@onready var hitPoints= MaxHp
+
 
 var already_hit_targets := []
 
@@ -43,6 +47,7 @@ func _physics_process(delta):
 			current_dir = "down";   input_vec.y += 1
 		if Input.is_action_pressed("Move_up"):
 			current_dir = "up";     input_vec.y -= 1
+			
  
 	if Input.is_action_pressed("Hit") and not on_action and time_since_last_hit >= hit_cooldown:
 		on_action = true
@@ -50,6 +55,7 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("Use") and not on_action and time_since_last_use>=use_cooldown:
 		on_action = true; current_action="use"
+		recieve_damage(1)
 	
 	
 	if input_vec != Vector2.ZERO:
@@ -132,3 +138,16 @@ func shadowLerp(delta):
 	var target_pos = global_position + Vector2(0, 4)  # offset shadow below
 	shadow_pos = shadow_pos.lerp(target_pos, delta * shadow_lerp_speed)
 	shadow.global_position = shadow_pos
+	
+	
+func recieve_damage(damage):
+	if hitPoints == 0:
+		return
+	elif hitPoints-damage <= 0:
+		hitPoints=0
+		health_changed.emit(hitPoints)
+		return
+	hitPoints -= damage
+	print("player received -" ,damage, "hp of damage")
+	print("player life:",hitPoints,"/",MaxHp)
+	health_changed.emit(hitPoints)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://sghucydc1jxf"]
+[gd_scene load_steps=6 format=3 uid="uid://sghucydc1jxf"]
 
 [ext_resource type="PackedScene" uid="uid://bogbokqf3bc63" path="res://scenes/player.tscn" id="1_echbf"]
 [ext_resource type="PackedScene" uid="uid://y87rrb8pw00r" path="res://scenes/LevelTest.tscn" id="2_ibiss"]
 [ext_resource type="PackedScene" uid="uid://cu8klxp4wprap" path="res://scenes/TrocarMapa.tscn" id="3_c6dvc"]
 [ext_resource type="PackedScene" uid="uid://bpae87eeqdebx" path="res://scenes/stone.tscn" id="4_611at"]
+[ext_resource type="PackedScene" uid="uid://bl345s2xms3m" path="res://scenes/interface.tscn" id="4_k24pf"]
 
 [node name="MainScene" type="Node2D"]
 
@@ -16,6 +17,8 @@ up_direction = Vector2(0, 1)
 
 [node name="TrocarMapa" parent="." instance=ExtResource("3_c6dvc")]
 position = Vector2(258, 22)
+
+[node name="Interface" parent="." instance=ExtResource("4_k24pf")]
 
 [node name="Pedras" type="Node" parent="."]
 
