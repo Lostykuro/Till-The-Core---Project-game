@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpae87eeqdebx"]
+[gd_scene load_steps=10 format=3 uid="uid://bpae87eeqdebx"]
 
 [ext_resource type="Script" uid="uid://d3sbikp7leftq" path="res://scripts/stone.gd" id="1_tuldt"]
+[ext_resource type="PackedScene" uid="uid://gwwrv2n6omix" path="res://scenes/OreDrop.tscn" id="2_6niw0"]
 [ext_resource type="Texture2D" uid="uid://buh5qkwfao4vp" path="res://assets/Sprites/tilemaps/stones_spr.png" id="2_f651v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6niw0"]
@@ -45,6 +46,7 @@ animations = [{
 
 [node name="Stone" type="StaticBody2D"]
 script = ExtResource("1_tuldt")
+drop_scene = ExtResource("2_6niw0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 7)

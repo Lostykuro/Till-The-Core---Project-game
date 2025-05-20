@@ -1,10 +1,14 @@
 extends Node2D
+
+@export var drop_scene: PackedScene
+
 @export_range(0, 100) var Initial_hit_points: int = 4
 @export_range(0, 100) var hit_points: int = 4
 @export var is_destroyed: bool = false
 @export_range(0, 3) var destruction_level: int = 0
 
 @onready var sprite := $AnimatedSprite2D
+
 
 
 
@@ -26,6 +30,7 @@ func set_destruction_level(value):
 		is_destroyed = true
 		$CollisionShape2D.disabled = true
 		z_index = -1  # pedra atrás do player
+		spawnar_drop()
 		
 func take_damage(amount: int):
 	if is_destroyed:
@@ -49,3 +54,9 @@ func update_sprite():
 			sprite.frame = 2  # só o restinho
 		3:
 			sprite.frame = 3 # completamente destruída
+
+func spawnar_drop():
+	if drop_scene:
+		var drop = drop_scene.instantiate()
+		drop.global_position = global_position + Vector2(0, 10)
+		get_parent().add_child(drop)

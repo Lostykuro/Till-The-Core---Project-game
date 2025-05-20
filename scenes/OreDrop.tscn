@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://gwwrv2n6omix"]
+
+[ext_resource type="Script" uid="uid://d1jl4yrc4b74h" path="res://scripts/OreDrop.gd" id="1_7xsmq"]
+[ext_resource type="Texture2D" uid="uid://bwywqpv7qnbfq" path="res://assets/Sprites/itens_Spr/MinerioTest.webp" id="1_675v5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xsmq"]
+size = Vector2(67, 58)
+
+[node name="Minerio" type="CharacterBody2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_7xsmq")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="collider" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7xsmq")
+
+[node name="MinerioTest" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_675v5")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
