@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var sprite := $AnimatedSprite2D
 
-
+var DropOre = preload("res://scenes/DropOre.tscn")
 
 func _ready():
 	hit_points=Initial_hit_points
@@ -27,6 +27,7 @@ func set_destruction_level(value):
 		is_destroyed = true
 		$CollisionShape2D.disabled = true
 		z_index = -1  # pedra atrás do player
+		drop_ore()
 		
 func take_damage(amount: int):
 	if is_destroyed:
@@ -50,3 +51,8 @@ func update_sprite():
 			sprite.frame = 2  # só o restinho
 		3:
 			sprite.frame = 3 # completamente destruída
+
+func drop_ore() :
+	var drop = DropOre.instantiate()
+	drop.global_position = global_position + Vector2(0,8)
+	get_parent().add_child(drop)
