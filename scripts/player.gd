@@ -8,7 +8,7 @@ var on_action := false
 
 var hit_cooldown := 0.5  # em segundos
 var time_since_last_hit := 0.0
-var use_cooldown := 0.8  # em segundos
+var use_cooldown := 0.1  # em segundos
 var time_since_last_use := 0.0
 
 var shadow_pos := Vector2.ZERO
@@ -21,7 +21,7 @@ var shadow_lerp_speed := 24
 
 
 signal health_changed(current_hp)
-@export var MaxHp= 10
+@export var MaxHp= 20
 @onready var hitPoints= MaxHp
 
 
@@ -142,9 +142,11 @@ func shadowLerp(delta):
 	
 func recieve_damage(damage):
 	if hitPoints == 0:
+		print("player life:",hitPoints,"/",MaxHp)
 		return
 	elif hitPoints-damage <= 0:
 		hitPoints=0
+		print("player life:",hitPoints,"/",MaxHp)
 		health_changed.emit(hitPoints)
 		return
 	hitPoints -= damage

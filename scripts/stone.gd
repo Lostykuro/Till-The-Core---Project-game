@@ -6,16 +6,31 @@ extends Node2D
 
 @onready var sprite := $AnimatedSprite2D
 
+var ore_types = ["diamond", "iron", "gold", "bismuth", "ruby", "crystal", "none"] #tipos de minerio
+var ore_probabilities = {
+	"none": 30,
+	"iron": 23,
+	"gold": 13,
+	"bismuth": 7,
+	"ruby": 11,
+	"crystal": 8,
+	"diamond": 7
+}
+var selected_ore_type = "none" #minerio inicial
+
 var DropOre = preload("res://scenes/DropOre.tscn")
 
 func _ready():
-	hit_points=Initial_hit_points
+	hit_points = Initial_hit_points
 	if is_destroyed:
-		hit_points=0
+		hit_points = 0
 		$CollisionShape2D.disabled = true
-		destruction_level=3
-		z_index = -1 
+		destruction_level = 3
+		z_index = -1
+	
+	selected_ore_type = pick_random_ore()
 	update_sprite()
+
 
 func set_destruction_level(value):
 	if is_destroyed:
@@ -52,7 +67,29 @@ func update_sprite():
 		3:
 			sprite.frame = 3 # completamente destruída
 
-func drop_ore() :
+
+func pick_random_ore() -> String:
+	var total_weight = 0
+	for weight in ore_probabilities.values():
+		total_weight += weight
+
+	var rand = randi() % total_weight
+	var current = 0
+
+	for ore in ore_probabilities.keys():
+		current += ore_probabilities[ore]
+		if rand < current:
+			return ore
+	
+	return "none"  # fallback
+
+
+func drop_ore():
+	if selected_ore_type == "none":
+		return  # nada dropa
+
 	var drop = DropOre.instantiate()
-	drop.global_position = global_position + Vector2(0,8)
+	drop.global_position = global_position + Vector2(0, 8)
+	drop.oreType = selected_ore_type
+	drop.match_type_sprite()
 	get_parent().add_child(drop)

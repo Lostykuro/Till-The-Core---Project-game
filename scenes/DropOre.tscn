@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kswp5y5awa1n"]
 
-[ext_resource type="Script" uid="uid://cmvgcsqspartg" path="res://scenes/DropOre.gd" id="1_dny61"]
+[ext_resource type="Script" uid="uid://cmvgcsqspartg" path="res://scripts/DropOre.gd" id="1_dny61"]
 [ext_resource type="Texture2D" uid="uid://d1j1w0goy5but" path="res://assets/Sprites/itens_Spr/ores_sheet.png" id="1_tivuq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dny61"]
@@ -9,7 +9,7 @@ radius = 5.0
 [node name="DropOre" type="Node2D"]
 script = ExtResource("1_dny61")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Ores" type="Sprite2D" parent="."]
 texture = ExtResource("1_tivuq")
 hframes = 6
 frame = 1
