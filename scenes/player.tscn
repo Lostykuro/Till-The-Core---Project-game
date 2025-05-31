@@ -345,21 +345,26 @@ animations = [{
 size = Vector2(34, 24)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 script = ExtResource("1_g2els")
-
-[node name="shadow" type="Sprite2D" parent="."]
-position = Vector2(0, -3)
-scale = Vector2(0.5625, 0.34375)
-texture = ExtResource("2_qhqgy")
 
 [node name="player collsion" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+y_sort_enabled = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ahudb")
 animation = &"use"
+
+[node name="shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, -3)
+scale = Vector2(0.5625, 0.34375)
+texture = ExtResource("2_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -8)

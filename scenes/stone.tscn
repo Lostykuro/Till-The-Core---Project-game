@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpae87eeqdebx"]
+[gd_scene load_steps=10 format=3 uid="uid://bpae87eeqdebx"]
 
 [ext_resource type="Script" uid="uid://d3sbikp7leftq" path="res://scripts/stone.gd" id="1_tuldt"]
 [ext_resource type="Texture2D" uid="uid://buh5qkwfao4vp" path="res://assets/Sprites/tilemaps/stones_spr.png" id="2_f651v"]
@@ -43,14 +43,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuldt"]
+size = Vector2(36, 20)
+
 [node name="Stone" type="StaticBody2D"]
 script = ExtResource("1_tuldt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 7)
+position = Vector2(-1, 5)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_6niw0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_w7uw0")
 animation = &"default_stone"
+
+[node name="Y_sorter" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Y_sorter"]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_tuldt")
