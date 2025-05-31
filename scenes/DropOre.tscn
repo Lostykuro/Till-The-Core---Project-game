@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://kswp5y5awa1n"]
+[gd_scene load_steps=5 format=3 uid="uid://kswp5y5awa1n"]
 
 [ext_resource type="Script" uid="uid://cmvgcsqspartg" path="res://scripts/DropOre.gd" id="1_dny61"]
 [ext_resource type="Texture2D" uid="uid://d1j1w0goy5but" path="res://assets/Sprites/itens_Spr/ores_sheet.png" id="1_tivuq"]
+[ext_resource type="AudioStream" uid="uid://bqxpo0gnlluu5" path="res://assets/sounds/pick.wav" id="3_gxeoc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dny61"]
 radius = 5.0
 
 [node name="DropOre" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_dny61")
 
 [node name="Ores" type="Sprite2D" parent="."]
@@ -18,5 +21,9 @@ frame = 1
 
 [node name="Collider" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_dny61")
+
+[node name="collect_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gxeoc")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

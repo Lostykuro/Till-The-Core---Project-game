@@ -3,11 +3,10 @@ extends Node2D
 @export_range(0, 100) var hit_points: int = 4
 @export var is_destroyed: bool = false
 @export_range(0, 3) var destruction_level: int = 0
-var player_inside := false
-var player_reference = null
+
 
 @onready var sprite := $AnimatedSprite2D
-
+@onready var Ysorter := $Y_sorter
 var ore_types = ["diamond", "iron", "gold", "bismuth", "ruby", "crystal", "none"] #tipos de minerio
 var ore_probabilities = {
 	"none": 30,
@@ -35,13 +34,22 @@ func _ready():
 	$Y_sorter.connect("body_entered", Callable(self, "_on_Y_sorter_body_entered"))
 	$Y_sorter.connect("body_exited", Callable(self, "_on_Y_sorter_body_exited"))
 
-func _process(delta):
-	if player_reference:
-		if player_reference.global_position.y < global_position.y:
-			z_index = 2  # pedra NA FRENTE do player
-		else:
-			z_index = 0  # pedra ATRÁS do player
-			
+func _process(_delta):
+	if is_destroyed:
+		z_index = -1
+		return
+
+	for body in Ysorter.get_overlapping_bodies():
+		if body.is_in_group("Player"):
+			if body.global_position.y < global_position.y:
+				z_index = 2
+			else:
+				z_index = -1
+			return # já encontrou o player, não precisa continuar
+
+	# se nenhum player estiver dentro da área
+	z_index = 2
+
 func set_destruction_level(value):
 	if is_destroyed:
 		return  # impede alterações
@@ -105,12 +113,3 @@ func drop_ore():
 	get_parent().add_child(drop)
 	
 	
-func _on_Y_sorter_body_entered(body):
-	if body.name == "Player":
-		player_inside = true
-		player_reference = body
-
-func _on_Y_sorter_body_exited(body):
-	if body.name == "Player":
-		player_inside = false
-		player_reference = null

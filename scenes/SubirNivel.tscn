@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://1tfpxubdl0up"]
+
+[ext_resource type="Script" uid="uid://dasoehi3wbqyo" path="res://scripts/SubirNivel.gd" id="1_wqq60"]
+[ext_resource type="Texture2D" uid="uid://du11mynda58qm" path="res://assets/Sprites/tilemaps/hole.png" id="2_6roif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owis4"]
+size = Vector2(26, 29)
+
+[node name="SubirNivel" type="Node2D"]
+z_index = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_wqq60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 10.5)
+shape = SubResource("RectangleShape2D_owis4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+rotation = 3.14159
+scale = Vector2(1, 0.98364)
+texture = ExtResource("2_6roif")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

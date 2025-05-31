@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwdjjta8wjiad"]
+
+[ext_resource type="PackedScene" uid="uid://y87rrb8pw00r" path="res://scenes/testArea.tscn" id="1_l37oo"]
+[ext_resource type="PackedScene" uid="uid://bpae87eeqdebx" path="res://scenes/stone.tscn" id="2_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://bogbokqf3bc63" path="res://scenes/player.tscn" id="3_ibugp"]
+[ext_resource type="PackedScene" uid="uid://cu8klxp4wprap" path="res://scenes/DescerLevel.tscn" id="4_8qukl"]
+[ext_resource type="PackedScene" uid="uid://bl345s2xms3m" path="res://scenes/interface.tscn" id="5_3p04p"]
+[ext_resource type="PackedScene" uid="uid://1tfpxubdl0up" path="res://scenes/SubirNivel.tscn" id="6_qpwj6"]
+
+[node name="level_2" type="Node2D"]
+
+[node name="LevelTest" parent="." instance=ExtResource("1_l37oo")]
+z_index = -1
+
+[node name="Pedras" type="Node" parent="."]
+
+[node name="Stone" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(303, 196)
+Initial_hit_points = 3
+hit_points = 3
+
+[node name="Stone2" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(118, 198)
+Initial_hit_points = 2
+hit_points = 2
+
+[node name="Stone3" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(158, 199)
+Initial_hit_points = 3
+hit_points = 3
+
+[node name="Stone4" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(214, 197)
+Initial_hit_points = 3
+hit_points = 3
+
+[node name="Stone5" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(370, 164)
+Initial_hit_points = 2
+hit_points = 2
+
+[node name="Stone6" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(62, 152)
+Initial_hit_points = 2
+hit_points = 2
+
+[node name="Stone7" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(69, 199)
+Initial_hit_points = 2
+hit_points = 2
+
+[node name="Stone8" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(338, 199)
+Initial_hit_points = 2
+hit_points = 2
+
+[node name="Stone9" parent="Pedras" instance=ExtResource("2_qpwj6")]
+position = Vector2(257, 195)
+Initial_hit_points = 3
+hit_points = 3
+
+[node name="SubirNivel" parent="." instance=ExtResource("6_qpwj6")]
+position = Vector2(189, 18)
+rotation = 0.00559051
+
+[node name="Player" parent="." instance=ExtResource("3_ibugp")]
+position = Vector2(189, 59)
+up_direction = Vector2(0, 1)
+
+[node name="TrocarMapa" parent="." instance=ExtResource("4_8qukl")]
+position = Vector2(325, 167)
+
+[node name="Interface" parent="." instance=ExtResource("5_3p04p")]
+
+[node name="wallcollision" type="Node" parent="."]

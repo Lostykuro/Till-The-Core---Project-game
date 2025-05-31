@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://sghucydc1jxf"]
+
+[ext_resource type="PackedScene" uid="uid://y87rrb8pw00r" path="res://scenes/testArea.tscn" id="1_6761a"]
+[ext_resource type="PackedScene" uid="uid://bpae87eeqdebx" path="res://scenes/stone.tscn" id="2_sk5k4"]
+[ext_resource type="PackedScene" uid="uid://bogbokqf3bc63" path="res://scenes/player.tscn" id="3_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://cu8klxp4wprap" path="res://scenes/DescerLevel.tscn" id="4_s8va5"]
+[ext_resource type="PackedScene" uid="uid://bl345s2xms3m" path="res://scenes/interface.tscn" id="5_dga24"]
+
+[node name="level_1" type="Node2D"]
+
+[node name="LevelTest" parent="." instance=ExtResource("1_6761a")]
+z_index = -1
+
+[node name="Pedras" type="Node" parent="."]
+
+[node name="Stone" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(300, 144)
+
+[node name="Stone2" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(72, 111)
+Initial_hit_points = 10
+hit_points = 10
+
+[node name="Stone3" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(128, 160)
+
+[node name="Stone4" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(219, 174)
+
+[node name="Stone5" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(302, 80)
+
+[node name="Stone6" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(91, 59)
+
+[node name="Stone7" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(63, 185)
+
+[node name="Stone8" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(330, 191)
+
+[node name="Stone9" parent="Pedras" instance=ExtResource("2_sk5k4")]
+position = Vector2(250, 124)
+
+[node name="Player" parent="." instance=ExtResource("3_oc4kc")]
+position = Vector2(189, 44)
+up_direction = Vector2(0, 1)
+
+[node name="TrocarMapa" parent="." instance=ExtResource("4_s8va5")]
+position = Vector2(304, 50)
+
+[node name="Interface" parent="." instance=ExtResource("5_dga24")]
+
+[node name="wallcollision" type="Node" parent="."]

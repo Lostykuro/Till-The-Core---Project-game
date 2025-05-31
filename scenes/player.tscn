@@ -1,8 +1,10 @@
-[gd_scene load_steps=48 format=3 uid="uid://bogbokqf3bc63"]
+[gd_scene load_steps=50 format=3 uid="uid://bogbokqf3bc63"]
 
 [ext_resource type="Script" uid="uid://dxmmv5a6yu7kd" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://0hyoo1imdhs3" path="res://assets/Sprites/player_Spr/PlayerSpr_sheet.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bhj7by55wi6jo" path="res://assets/Sprites/player_Spr/shadow.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://dkowkfbo1urg" path="res://assets/sounds/hit.wav" id="2_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://jqxq4doyovbb" path="res://assets/sounds/footstep.wav" id="3_tuyoq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 9.0
@@ -347,6 +349,8 @@ size = Vector2(34, 24)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 script = ExtResource("1_g2els")
+sfx_hit = ExtResource("2_qlg0r")
+sfx_footsteps = ExtResource("3_tuyoq")
 
 [node name="player collsion" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -357,7 +361,7 @@ z_index = 2
 y_sort_enabled = true
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ahudb")
-animation = &"use"
+animation = &"hit_back"
 
 [node name="shadow" type="Sprite2D" parent="."]
 z_index = -1
@@ -389,3 +393,9 @@ debug_color = Color(0.720795, 0.46271, 0.34931, 0.42)
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_g2els")
 debug_color = Color(0.670091, 0.467325, 0.549787, 0.42)
+
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

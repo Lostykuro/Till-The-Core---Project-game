@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://sghucydc1jxf"]
+
+[ext_resource type="PackedScene" uid="uid://bogbokqf3bc63" path="res://scenes/player.tscn" id="1_echbf"]
+[ext_resource type="PackedScene" uid="uid://y87rrb8pw00r" path="res://scenes/LevelTest.tscn" id="2_ibiss"]
+[ext_resource type="PackedScene" uid="uid://cu8klxp4wprap" path="res://scenes/TrocarMapa.tscn" id="3_c6dvc"]
+[ext_resource type="PackedScene" uid="uid://bpae87eeqdebx" path="res://scenes/stone.tscn" id="4_611at"]
+[ext_resource type="PackedScene" uid="uid://bl345s2xms3m" path="res://scenes/interface.tscn" id="4_k24pf"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="LevelTest" parent="." instance=ExtResource("2_ibiss")]
+z_index = -1
+
+[node name="Pedras" type="Node" parent="."]
+
+[node name="Stone" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(300, 144)
+
+[node name="Stone2" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(64, 203)
+Initial_hit_points = 10
+hit_points = 10
+
+[node name="Stone3" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(165, 209)
+
+[node name="Stone4" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(284, 183)
+
+[node name="Stone5" parent="Pedras" instance=ExtResource("4_611at")]
+position = Vector2(355, 84)
+
+[node name="Player" parent="." instance=ExtResource("1_echbf")]
+position = Vector2(186, 103)
+up_direction = Vector2(0, 1)
+
+[node name="TrocarMapa" parent="." instance=ExtResource("3_c6dvc")]
+position = Vector2(367, 50)
+
+[node name="Interface" parent="." instance=ExtResource("4_k24pf")]
+
+[node name="wallcollision" type="Node" parent="."]
+
+[node name="collision" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision"]
+position = Vector2(35.4783, 105.402)
+polygon = PackedVector2Array(-94.4783, -168.402, 410.522, -163.402, 431.522, 160.598, 421.522, 201.598, 26.5217, 190.598, -93.4783, 172.598, -113.478, 98.5982, -110.478, -150.402, -103.478, -158.402, -51.4783, -114.402, -51.4783, -25.4018, -23.4783, -24.4018, -6.47829, -18.4018, -3.47829, -6.4018, -3.47829, 35.5982, -4.47829, 50.5982, -17.4783, 55.5982, -40.4783, 53.5982, -50.4783, 53.5982, -51.4783, 58.5982, -50.4783, 72.5982, -49.4783, 84.5982, -35.4783, 87.5982, -23.4783, 91.5982, -18.4783, 98.5982, -18.4783, 119.598, -12.4783, 123.598, 6.52171, 121.598, 19.5217, 120.598, 35.5217, 123.598, 62.5217, 119.598, 81.5217, 122.598, 111.522, 119.598, 148.522, 118.598, 160.522, 120.598, 176.522, 119.598, 195.522, 117.598, 209.522, 120.598, 245.522, 118.598, 258.522, 120.598, 295.522, 118.598, 324.522, 119.598, 331.522, 117.598, 330.522, 103.598, 332.522, 90.5982, 357.522, 83.5982, 366.522, 77.5982, 365.522, -75.4018, 361.522, -81.4018, 351.522, -84.4018, 276.522, -84.4018, 256.522, -85.4018, 239.522, -83.4018, 213.522, -82.4018, 201.522, -82.4018, 188.522, -83.4018, 98.5217, -83.4018, 79.5217, -85.4018, 65.5217, -83.4018, 22.5217, -83.4018, 12.5217, -86.4018, 0.521713, -84.4018, -27.4783, -84.4018, -44.4783, -84.4018, -50.4783, -80.4018, -49.4783, -117.402, -101.478, -162.402)

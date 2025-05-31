@@ -2,10 +2,14 @@ extends CanvasLayer
 
 @onready var heart_container = $Control/HBoxContainer
 const HEART_SCENE = preload("res://scenes/HeartSprite.tscn")
+var player: Node = null
 
 func _ready():
-	var player = get_node("/root/MainScene/Player")
-	var max_hp = player.MaxHp# pega a vida máxima do jogador
+	# Espera um pequeno tempo para garantir que a cena carregou
+	await get_tree().process_frame
+	player = get_tree().get_nodes_in_group("Player")[0]
+
+	var max_hp = player.MaxHp
 
 	for i in range(max_hp):
 		var heart = HEART_SCENE.instantiate()
@@ -16,7 +20,6 @@ func _ready():
 
 
 func update_hearts(current_hp):
-	var player = get_node("/root/MainScene/Player")
 	var max_hp = player.MaxHp
 
 	for i in range(heart_container.get_child_count()):
@@ -26,10 +29,10 @@ func update_hearts(current_hp):
 		var hp_ratio = float(current_hp) / max_hp
 		var diff = heart_position_ratio - hp_ratio
 
-		var frame_index = 0  # padrão: vazio
+		var frame_index = 0
 
 		if diff <= 0.0:
-			frame_index = 0  # cheio
+			frame_index = 0
 		elif diff <= 0.1:
 			frame_index = 1
 		elif diff <= 0.2:
@@ -49,6 +52,6 @@ func update_hearts(current_hp):
 		elif diff < 1:
 			frame_index = 9
 		elif diff >= 1:
-			frame_index = 10  
+			frame_index = 10
 
 		heart.frame = frame_index
