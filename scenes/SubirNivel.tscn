@@ -1,13 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://1tfpxubdl0up"]
+[gd_scene load_steps=5 format=3 uid="uid://1tfpxubdl0up"]
 
 [ext_resource type="Script" uid="uid://dasoehi3wbqyo" path="res://scripts/SubirNivel.gd" id="1_wqq60"]
 [ext_resource type="Texture2D" uid="uid://du11mynda58qm" path="res://assets/Sprites/tilemaps/hole.png" id="2_6roif"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wqq60"]
+radius = 9.0
+height = 32.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owis4"]
 size = Vector2(26, 29)
 
-[node name="SubirNivel" type="Node2D"]
+[node name="SubirNivel" type="StaticBody2D"]
 z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_wqq60")
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_wqq60")

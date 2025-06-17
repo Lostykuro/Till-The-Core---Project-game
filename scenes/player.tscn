@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://bogbokqf3bc63"]
+[gd_scene load_steps=51 format=3 uid="uid://bogbokqf3bc63"]
 
 [ext_resource type="Script" uid="uid://dxmmv5a6yu7kd" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://0hyoo1imdhs3" path="res://assets/Sprites/player_Spr/PlayerSpr_sheet.png" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://bhj7by55wi6jo" path="res://assets/Sprites/player_Spr/shadow.png" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://dkowkfbo1urg" path="res://assets/sounds/hit.wav" id="2_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://jqxq4doyovbb" path="res://assets/sounds/footstep.wav" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://cgdwr7h3kndja" path="res://assets/Sprites/player_Spr/light.png" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 radius = 9.0
@@ -397,5 +398,11 @@ debug_color = Color(0.670091, 0.467325, 0.549787, 0.42)
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(0.556641, 0.556641)
+color = Color(1, 1, 0.505882, 1)
+texture = ExtResource("6_tuyoq")
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

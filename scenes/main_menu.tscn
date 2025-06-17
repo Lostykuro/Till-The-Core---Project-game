@@ -1,0 +1,89 @@
+[gd_scene load_steps=2 format=3 uid="uid://8ery4hbk3pai"]
+
+[ext_resource type="Script" uid="uid://c7iyir2rmvve3" path="res://Scripts/Menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+
+[node name="DevContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DevName" type="Label" parent="DevContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Feito por João Maria e Gilberto Rodrigues"
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="NomeDoJogo" type="Label" parent="MainContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Till the Core"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Jogar"
+icon_alignment = 1
+
+[node name="ControlsButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controles
+"
+
+[node name="QuitButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sair
+"
+
+[connection signal="button_up" from="MainContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_button_up"]
+[connection signal="button_up" from="MainContainer/HBoxContainer/VBoxContainer/ControlsButton" to="." method="_on_settings_button_button_up"]
+[connection signal="button_up" from="MainContainer/HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_up"]

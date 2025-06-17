@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu8klxp4wprap"]
+[gd_scene load_steps=5 format=3 uid="uid://cu8klxp4wprap"]
 
 [ext_resource type="Script" uid="uid://dt7hvi2023aik" path="res://scripts/DescerNivel.gd" id="1_a1o37"]
 [ext_resource type="Texture2D" uid="uid://du11mynda58qm" path="res://assets/Sprites/tilemaps/hole.png" id="2_gpl30"]
@@ -6,7 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1o37"]
 size = Vector2(26, 14)
 
-[node name="DescerLevel" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0d0j"]
+radius = 7.0
+height = 28.0
+
+[node name="DescerLevel" type="StaticBody2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("1_a1o37")
@@ -19,5 +23,10 @@ shape = SubResource("RectangleShape2D_a1o37")
 position = Vector2(0, -1)
 scale = Vector2(1, 0.98364)
 texture = ExtResource("2_gpl30")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_x0d0j")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
