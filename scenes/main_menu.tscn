@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://8ery4hbk3pai"]
+[gd_scene load_steps=5 format=3 uid="uid://8ery4hbk3pai"]
 
 [ext_resource type="Script" uid="uid://c7iyir2rmvve3" path="res://Scripts/Menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://c3qjhfbd4dpp2" path="res://assets/Sprites/icons/tittle.png" id="2_bqqt6"]
+[ext_resource type="FontFile" uid="uid://dsiugow583mn" path="res://assets/font/Perfect DOS VGA 437 Win.ttf" id="2_wu84c"]
+[ext_resource type="Theme" uid="uid://chi5s0ln03l0w" path="res://assets/Resources/Default.tres" id="3_wu84c"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -18,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.998184, 0.994464)
 color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 
 [node name="DevContainer" type="HBoxContainer" parent="."]
@@ -27,16 +31,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
+offset_left = -230.0
+offset_top = -51.0
+offset_right = 231.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="DevName" type="Label" parent="DevContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("2_wu84c")
+theme_override_font_sizes/font_size = 20
 text = "Feito por João Maria e Gilberto Rodrigues"
+
+[node name="Tittle" type="Sprite2D" parent="."]
+position = Vector2(576, 178)
+scale = Vector2(7.03125, 7.03125)
+texture = ExtResource("2_bqqt6")
 
 [node name="MainContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,19 +57,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -120.0
-offset_top = -120.0
+offset_top = -21.0
 offset_right = 120.0
-offset_bottom = 120.0
+offset_bottom = 219.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
-
-[node name="NomeDoJogo" type="Label" parent="MainContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Till the Core"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
@@ -71,16 +76,19 @@ theme_override_constants/separation = 16
 
 [node name="PlayButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wu84c")
 text = "Jogar"
 icon_alignment = 1
 
 [node name="ControlsButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wu84c")
 text = "Controles
 "
 
 [node name="QuitButton" type="Button" parent="MainContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_wu84c")
 text = "Sair
 "
 
